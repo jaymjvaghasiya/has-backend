@@ -21,9 +21,6 @@ const employeeSchema = new schema({
     password: {
         type: String
     },
-    dateOfJoining: {
-        type: String
-    },
     qualification: {
         type: String
     },
@@ -31,24 +28,22 @@ const employeeSchema = new schema({
         type: schema.Types.ObjectId,
         ref: 'role'
     },
-    aadharCardPath: {
+    contactNum: {
         type: String,
-        // unique: true
-    },
-    panCardPath: {
-        type: String,
-        // unique: true
-    },
-    qualificationDocPath: {
-        type: String
+        unique: true
     },
     activeInd: {
         type: Boolean
     },
-    contactNum: {
+    dateOfJoining: {
+        type: String
+    },
+    aadharCardPath: {
         type: String,
-        unique: true
     }
+    // qualificationDocPath: {
+    //     type: String
+    // },
 })
 
 module.exports = mongoose.model('employee', employeeSchema);

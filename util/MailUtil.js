@@ -22,12 +22,19 @@ const mailSend = async (to) => {
     const res = await transporter.sendMail(mailOption);
 }
 
-const mailSend2 = async (to) => {
+const mailSend2 = async (to, dname) => {
     const mailOption = {
         from: 'vaghasiyajaykumar251@gmail.com',
         to: to,
         subject: "Online cunsultency metting",
-        text: 'meeting ID: abc'
+        html: `
+            <h3>Doctor Name: ${dname}</h3>
+            <h3>Meeting ID: 8935865 0012</h3>
+            <h3>Passcoad: mq1bb4</h3>
+            <h3>Numeric Passcoad: 544321</h3>
+
+            <h4>Invile Lint: https://us05web.zoom.us/j/84228374697?pwd=AKIzveaztCWbls9rnsuXYUB9sf3d9f.1</h4>
+        `
     }
 
     const transporter = mailer.createTransport({
@@ -41,7 +48,171 @@ const mailSend2 = async (to) => {
     const res = await transporter.sendMail(mailOption);
 }
 
+const mailSend3 = async (to, text) => {
+
+    let patientId = text?.patientId;
+    let doctorId = text?.docId;
+    let patientName = text?.patientName;
+    let doctorName = text?.docName;
+    let m1 = text?.m1;
+    let m2 = text?.m2;
+    let m3 = text?.m3;
+    let m4 = text?.m4;
+    let m5 = text?.m5;
+    let reports = text?.reports;
+    let advice = text?.advice;
+    let date = text?.date;
+    let email = text?.email;
+
+    const mailOption = {
+        from: 'vaghasiyajaykumar251@gmail.com',
+        to: to,
+        subject: "Your Prescription",
+        html: `
+        <h3>Patient id: ${patientId}</h3>
+        <h3>Patient name: ${patientName}</h3>
+        <h3>Doctor name: ${doctorName}</h3>
+        <hr>
+        <h2>Prescription: </h2>
+        <table>
+            <tr>
+                <td>Sr no.</td>
+                </td>Drug</td>
+                </td>Frequency</td>
+                </td>Instruction</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>${m1[0]}</td>
+                <td>${m1[1]}</td>
+                <td>${m1[2]}</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>${m2[0]}</td>
+                <td>${m2[1]}</td>
+                <td>${m2[2]}</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>${m3[0]}</td>
+                <td>${m3[1]}</td>
+                <td>${m3[2]}</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>${m4[0]}</td>
+                <td>${m4[1]}</td>
+                <td>${m4[2]}</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>${m5[0]}</td>
+                <td>${m5[1]}</td>
+                <td>${m5[2]}</td>
+            </tr>
+        </table>
+        <br>
+        <h3>Reports: ${reports}</h3>
+        <h3>Advice: ${advice}</h3>
+        <h3>Date: ${date}</h3>
+        <h3>Email: ${email}</h3>
+        `
+    }
+
+    const transporter = mailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'vaghasiyajaykumar251@gmail.com',
+            pass: 'mxasudnvasgycwks'
+        }
+    })
+
+    const res = await transporter.sendMail(mailOption);
+}
+
+const mailSend4 = async (to, otp) => {
+    const mailOption = {
+        from: 'vaghasiyajaykumar251@gmail.com',
+        to: to,
+        subject: "OTP for Reset Password",
+        html: `
+            <h2>Your OTP: ${otp}</h2>
+        `
+    }
+
+    const transporter = mailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'vaghasiyajaykumar251@gmail.com',
+            pass: 'mxasudnvasgycwks'
+        }
+    })
+
+    const res = await transporter.sendMail(mailOption);
+}
+
+const mailSend5 = async (to, obj) => {
+
+    let patient_id = obj.patient_id;
+    let patient_name = obj.patient_name;
+    let doctor_name = obj.doctor_name;
+    let appointment_date = obj.appointment_date;
+    let status = obj.status;
+    let payment_status = 'success';
+
+    const mailOption = {
+        from: 'vaghasiyajaykumar251@gmail.com',
+        to: to,
+        subject: "Appointment Booked",
+        html: `
+            <h3>Patient ID: ${patient_id}</h3>
+            <h3>Patient name: ${patient_name}</h3>
+            <h3>Doctor name: ${doctor_name}</h3>
+            <h3>Appointment date: ${appointment_date}</h3>
+            <h3>Status: ${status}</h3>
+            <h3>Payment status: ${payment_status}</h3>
+        `
+    }
+
+    const transporter = mailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'vaghasiyajaykumar251@gmail.com',
+            pass: 'mxasudnvasgycwks'
+        }
+    })
+
+    const res = await transporter.sendMail(mailOption);
+}
+
+const mailSend6 = async (to, otp) => {
+    const mailOption = {
+        from: 'vaghasiyajaykumar251@gmail.com',
+        to: to,
+        subject: "OTP for Payment",
+        html: `
+            <h2>Your OTP: ${otp}</h2>
+        `
+    }
+
+    const transporter = mailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'vaghasiyajaykumar251@gmail.com',
+            pass: 'mxasudnvasgycwks'
+        }
+    })
+
+    const res = await transporter.sendMail(mailOption);
+}
+
+
 module.exports = {
     mailSend,
-    mailSend2
+    mailSend2,
+    mailSend3,
+    mailSend4,
+    mailSend5,
+    mailSend6
 }

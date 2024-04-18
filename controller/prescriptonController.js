@@ -1,4 +1,5 @@
 const prescriptionSchema = require('../models/prescription');
+const mailUtil = require('../util/MailUtil');
 
 const getData = async (req, res) => {
     try {
@@ -54,6 +55,9 @@ const createData = async (req, res) => {
     try {
         const newObj = Object.assign(req.body);
         const result = await prescriptionSchema.create(newObj);
+        // console.log(result);
+        // console.log(result.email);
+        const result2 = await mailUtil.mailSend3(result.email, newObj);
         res.status(200).json({
             message: "Data created successfully.",
             data: result,

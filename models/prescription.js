@@ -39,6 +39,9 @@ const prescriptionSchema = new schema({
     },
     date: {
         type: String
+    },
+    email: {
+        type: String
     }
 })
 

@@ -13,7 +13,6 @@ const patientSchema = new schema({
     },
     email: {
         type: String,
-        unique: true
     },
     password: {
         type: String
@@ -54,7 +53,6 @@ const patientSchema = new schema({
     },
     contactNum: {
         type: String,
-        unique: true
     },
     alternatievNo: {
         type: String

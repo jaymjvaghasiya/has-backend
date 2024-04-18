@@ -92,6 +92,7 @@ const getById = async (req, res) => {
             flag: 1
         })
     } catch(err) {
+        console.log(err);
         res.status(501).json({
             message: "Error occured in getById.",
             flag: -1
@@ -197,6 +198,7 @@ const updateData = async (req, res) => {
             flag: 1
         })
     } catch(err) {
+        console.log(err);
         res.status(501).json({
             message: "Error occured.",
             flag: -1

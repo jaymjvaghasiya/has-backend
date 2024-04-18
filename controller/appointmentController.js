@@ -1,5 +1,8 @@
 const appointmentModel = require('../models/appointment');
-
+const mailUtil = require('../util/MailUtil');
+const patientModel = require('../models/patient');
+const doctorModel = require('../models/doctor');
+const whatsappUtil = require('../util/WhatsappUtil');
 
 const getData = async (req, res) => {
     try {
@@ -36,6 +39,19 @@ const getById = async (req, res) => {
 const createData = async (req, res) => {
     try {
         const result = await appointmentModel.create(req.body);
+        const result2 = await patientModel.findById(req.body.patient);
+        const result3 = await doctorModel.findById(req.body.doctor);
+
+        let newObj = {
+            patient_id: req.body.patient,
+            patient_name: result2.firstName + ' ' + result2.lastName,
+            doctor_name: result3.firstName + ' ' + result3.lastName,
+            appointment_date: req.body.appointmentDate,
+            status: 'Pending'
+        }
+
+        const result4 = await mailUtil.mailSend5(result2.email, newObj);
+    
         res.status(201).json({
             message: "Data created successfully.",
             data: result,

@@ -27,7 +27,6 @@ const createData = async (req, res) => {
             flag: 1
         })
 
-
     } catch(err) {
         console.log(err);
         res.status(501).json({
@@ -55,8 +54,8 @@ const deleteData = async (req, res) => {
 
 const sentMail = async (req, res) => {
     try {
-        const data = await opdpatient.findById(req.params.id);
-        const result = await mailUtil.mailSend2(data.email);
+        const data = await opdpatient.findById(req.body._id);
+        const result = await mailUtil.mailSend2(req.body.email, req.body.doctor_name);
         res.status(200).json({
             message: "Mail sent successfully.",
             data: data,

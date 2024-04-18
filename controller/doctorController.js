@@ -164,7 +164,6 @@ const login = async(req, res) => {
         const emailFromDb = await doctorModel.findOne({email: req.body.email}).populate('role');
         if(req.body.email == emailFromDb.email) {
             const flag = encryptPass.comparePassword(req.body.password, emailFromDb.password);
-            console.log(flag);
             if(flag) {
                 res.status(200).json({
                     message: "Login successful.",
