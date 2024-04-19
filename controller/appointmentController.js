@@ -2,7 +2,6 @@ const appointmentModel = require('../models/appointment');
 const mailUtil = require('../util/MailUtil');
 const patientModel = require('../models/patient');
 const doctorModel = require('../models/doctor');
-const whatsappUtil = require('../util/WhatsappUtil');
 
 const getData = async (req, res) => {
     try {

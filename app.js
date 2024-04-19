@@ -101,9 +101,6 @@ app.use('/uploadfile', uploadRoutes);
 const prescriptionRoute = require('./routes/prescriptionRoute');
 app.use('/prescription', prescriptionRoute);
 
-const sendMsgRoute = require('./routes/sendMsg');
-app.use('/sendMsg', sendMsgRoute);
-
 app.listen(PORT, () => {
     console.log("Server is running on port " + PORT);
 })
