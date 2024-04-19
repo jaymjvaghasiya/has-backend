@@ -1,8 +1,12 @@
 const patientModel = require('../models/patient');
 const doctorModel = require('../models/doctor');
 
-const accountSid = 'ACa3c40160e8d1898122e40aeccdce1f46';
-const authToken = '0957c1ec3530ebc9239bfe9bb8e6ba84';
+// const accountSid = 'ACa3c40160e8d1898122e40aeccdce1f46';
+// const authToken = '0957c1ec3530ebc9239bfe9bb8e6ba84';
+
+const accountSid = 'AC';
+const authToken = '';
+
 const client = require('twilio')(accountSid, authToken);
 
 const sendMsg1 = async(req, res) => {
