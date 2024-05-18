@@ -10,7 +10,7 @@ app.use(express.json());
 const mongoose = require('mongoose');
 
 // const db = mongoose.connect('mongodb://127.0.0.1:27017/hms');
-const db = mongoose.connect('mongodb+srv://vaghasiyajay2002:jay@cluster0.e3l1dto.mongodb.net//hms');
+const db = mongoose.connect('mongodb+srv://vaghasiyajay2002:jay@cluster0.e3l1dto.mongodb.net/hms');
 
 db.then(() => {
     console.log("Database is connected.");
